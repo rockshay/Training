@@ -11,13 +11,13 @@ public class LoginPage extends TestBase{
 	HomePage homePage;
 
 	//PageFactory
-	@FindBy(id="emailId")
+	@FindBy(id="username")
 	WebElement emailAdr;
 	
-	@FindBy(id="passwordId")
+	@FindBy(id="password")
 	WebElement password;
 	
-	@FindBy(xpath="//*[@id=\"wrapall\"]/div/app-root/div/ng-component/div/app-create-account/div/form/div/div[2]/div[4]/div[2]/button")
+	@FindBy(id="sign-in-button")
 	WebElement signInBtn;
 	
 	public LoginPage() {
@@ -27,11 +27,8 @@ public class LoginPage extends TestBase{
 	public HomePage login(String email,String pwd) throws Exception{
 		emailAdr.sendKeys(email);
 		password.sendKeys(pwd);
-		
-		Actions actions = new Actions(driver);
-		actions.moveToElement(signInBtn).click().build().perform();
 		signInBtn.click();
-		return homePage;
+		return new HomePage();
 	}
 	
 	public String validatePageTitle() {

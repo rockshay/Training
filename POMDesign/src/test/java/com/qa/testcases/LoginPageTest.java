@@ -29,13 +29,15 @@ public class LoginPageTest extends TestBase{
 	@Test
 	public void loginPageTitleTest() {
 		String title = loginPage.validatePageTitle();
-		Assert.assertEquals(title, "Office Supplies, Technology, Ink & Much More | Staples®");
+		Assert.assertEquals(title, "It's easy to find the Office Supplies, Copy Paper, Furniture, Ink, Toner, Cleaning Products, Electronics and the Technology you need | Staples®");
 	}
 	
 	@Test
 	public void loginTest() throws Exception {
 		homePage = loginPage.login("akshay123409876@gmail.com", "Password123");
-		Thread.sleep(3000);
+		Thread.sleep(5000);
+		String homePageTitle = homePage.validatePageTitle();
+		Assert.assertEquals(homePageTitle, "Staples® Official Online Store"); 
 	}
 	
 	@AfterMethod
